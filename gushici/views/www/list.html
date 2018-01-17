@@ -1,0 +1,47 @@
+<div class="layui-row layui-col-space15">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+            <legend>{{.data.class_name}}</legend>
+        </fieldset>
+{{range $ind, $elem := .data.list}}
+        <div class="layui-col-xs12 layui-col-sm6 layui-col-md3">
+            <div class="item">
+                <a class="img_span" href="/show/{{$elem.id}}">
+                    <span class="img_span" style="background: url(https://www.kaixin00.com/{{$elem.picurl}}) center center / cover no-repeat;"></span>
+                </a>
+                <div class="list_p">
+                    <div class="text">{{if $elem.media}}
+                        <i class="layui-icon" style="font-size: 20px; color: #1E9FFF;">&#xe645;</i>
+                    {{else}}
+                        <i class="layui-icon" style="font-size: 20px; color: #1E9FFF;">&#xe705;</i>
+                    {{end}}
+                    {{$elem.title}}</div>
+                    <div class="desc">{{$elem.desc}}</div>
+                </div>
+            </div>
+        </div>
+ {{end}}
+</div>
+<div class="layui-row" id="page"></div>
+<script>
+    layui.use('laypage', function(){
+        var laypage = layui.laypage;
+
+        //执行一个laypage实例
+        laypage.render({
+            elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
+            ,count: {{.data.count}}
+            ,limit:16
+            ,curr:{{.data.page}}
+            ,jump: function(obj, first){
+
+                //obj包含了当前分页的所有参数，比如：
+                console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                console.log(obj.limit); //得到每页显示的条数
+                //首次不执行
+                if(!first){
+                    window.location.href="/list/{{.data.class_id}}?page="+obj.curr
+                }
+            }
+        });
+    });
+</script>

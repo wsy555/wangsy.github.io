@@ -1,0 +1,248 @@
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+  opacity: 0
+}
+
+header{
+  box-sizing: border-box;
+  width: 100%;
+  height: 45px;
+  /* background-color: #fff; */
+  border-bottom: 1px solid #000;
+}
+.header-lang-div{
+  height: 45px;
+  line-height: 45px;
+  float: left;
+  margin-left: 10px;
+}
+.header-lang-img{
+  font-size: 12px;
+  padding: 0 10px;
+  height: 20px;
+  border: 0px;
+}
+.lang-list-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  z-index: 2;
+  background: rgba(0,0,0,.6);
+  -pie-background: rgba(0,0,0,.6);
+  -webkit-tap-highlight-color: transparent;
+}
+html {
+  overflow-y: scroll;
+}
+
+:root {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+:root body {
+  position: absolute;
+}
+
+body {
+  width: 100vw;
+  overflow: hidden;
+}
+.lang-list-div{
+  position: absolute;
+  margin-left: 136px;
+  margin-top: 2px;
+  top: 45px;
+  width: 30%;
+  z-index: 2;
+/*  min-width: 240px;
+  max-width: 260px;*/
+  background-color: #fff;
+}
+.lang-list-li{
+  display: inline-block;
+  width: 18%;
+}
+.lang-flag-img{
+  width: 37px;
+}
+
+.header-lang-img{
+  padding: 0 7px;
+  height: 16px;
+  border: 0px;
+}
+.lang-list-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  z-index: 2;
+  background: rgba(0,0,0,.1);
+  -pie-background: rgba(0,0,0,.1);
+  -webkit-tap-highlight-color: transparent;
+}
+.lang-list-div{
+  position: absolute;
+  margin-left: 136px;
+  width: 100px;
+  margin-top: 2px;
+  top: 45px;
+  z-index: 2;
+/*   width: 30%;
+min-width: 240px;
+max-width: 260px; */
+  background-color: #fff;
+}
+.lang-list-li{
+  display: inline-block;
+  /*width: 18%;*/
+  width: 50px;
+}
+.lang-flag-img{
+  width: 37px;
+}
+.header-a{
+  float: left;
+  padding: 0;
+  margin-left: 5%;
+  height: 45px;
+}
+.body{
+  position: relative;
+  margin:0px;
+  padding-top: 15px;
+  /*padding: 0px;*/
+  /* background: #ececec; */
+}
+.body-ul{
+  padding: 0px;
+  margin-right: 2%;
+}
+.body-ul-li{
+  float: left;
+  padding-left: 2%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  list-style: none;
+}
+@media screen and (min-width: 920px){
+  .info{
+  	font-size: 15px;
+    height: 60px;
+  }
+  .body-ul-li{
+    width: 25%;
+  }
+}
+@media screen and (max-width: 919px){
+  .info{
+  	font-size: 14px;
+  }
+  .body-ul-li{
+    width: 33.3%;
+  }
+}
+@media screen and (max-width: 619px){
+  .info{
+    height: 45px;
+  	font-size: 13px;
+  }
+  .body-ul-li{
+    width: 50%;
+  }
+}
+.ul-li.div{
+  position: relative;
+  height: 280px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.li-a-div{
+	position: relative;
+	    overflow: hidden;
+	    height: 0;
+	    padding-bottom: 56%;
+	    width: 100%;
+	    background: no-repeat 50%;
+	    background-size: cover;
+}
+.thumb{
+  display: block;
+  width: 110%;
+  float: none;
+}
+.info{
+  height: 48px;
+  font-weight: 700;
+  padding: 10px 10px 3px 10px;
+  line-height: 1.3em;
+  color: #000;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  background-color: #fff;
+}
+.info p{
+  color: #000;
+}
+.getMoreImg{
+	/* margin-top: .6%; */
+	width: 1.5%;
+	min-width: 10px;
+  max-width: 12px;
+	-moz-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	transform:rotate(90deg);
+	filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+
+}
+.searchMore{
+  width: 80%;
+  margin:0 auto;
+  border-radius: 5px;
+  height: 40px;
+  line-height: 40px;
+  background: #fff;
+}
+.searchMore-div{
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+.searchMore-btn{
+  min-width: 70px;
+  text-align: left;
+  margin-left: 5px;
+  height: 40px;
+  border: 0px;
+  font-size: 16px;
+  background: #fff;
+}
+.hand{
+	cursor: pointer;
+}
+.loading {
+	line-height: 40px;
+}
+.loading-bar { display: inline-block; width: 4px; height: 10px; border-radius: 4px; animation: loading 1s ease-in-out infinite;}
+.loading-bar:nth-child(1) { background-color: #dc6082; animation-delay: 0;}
+.loading-bar:nth-child(2) { background-color: #dc6082; animation-delay: 0.09s;}
+.loading-bar:nth-child(3) { background-color: #dc6082; animation-delay: .18s;}
+.loading-bar:nth-child(4) { background-color: #dc6082; animation-delay: .27s;}
+@keyframes loading { 0% { transform: scale(1); } 20% { transform: scale(1, 2.2); } 40% { transform: scale(1);} }
+footer{
+  padding-top: 20px;
+}

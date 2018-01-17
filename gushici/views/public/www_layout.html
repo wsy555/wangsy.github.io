@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
+    <meta name="keywords" content="古诗词,名句,美文,儿歌,童谣,诗词,名言,传统文化" />
+    <meta name="description" content="最好的古诗词学习网站,古诗词,名言,美文,儿歌,童谣欣赏。" />
+    <title>{{if .data.title}} {{.data.title}}-{{end}}古诗词,美文,名言,儿歌,童谣,传统文化-开心学府</title>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <script src="/static/layui/layui.js?s=36"></script>
+    <style>
+        body{
+            background-color: #ffffff;
+            font:14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif
+        }
+        .img_span{
+            display: block;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: #d2d2d2;
+        }
+        .list_p{
+            margin: 10px;
+        }
+        .item{
+            display: block;
+            border: 1px solid #d2d2d2;
+            padding: 1px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.1);
+
+        }
+        .text{
+            padding: 3px;
+            margin: 5px;
+            display: block;
+            word-break:keep-all;           /* 不换行 */
+            white-space:nowrap;          /* 不换行 */
+            overflow: hidden;
+            max-height: 24px;
+
+        }
+        .desc{
+            padding: 10px;
+            display: block;
+            color:#999;
+            overflow: hidden;
+            height: 31px;
+        }
+        .footer{
+            padding: 10px;
+            text-align: center;
+            margin: 10px auto;
+        }
+        .show{
+            text-align: center;
+        }
+        .show p{
+            line-height: 35px;
+            font-size: 18px;
+        }
+        .show pre{
+            line-height: 35px;
+            font-size: 18px;
+        }
+        .show div{
+            line-height: 35px;
+            font-size: 18px;
+
+        }
+        .index-list{
+            padding: 1px;
+        }
+        .index-list a{
+            font-size: 14px;
+            line-height: 30px;
+            padding: 5px;
+            border-bottom: 1px solid #e1e1e1;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-container">
+    <div class="layui-row" style="margin-bottom: 10px">
+        <ul class="layui-nav layui-bg-cyan" lay-filter="">
+            <li class="layui-nav-item {{if eq .data.class_id  0}}layui-this{{end}}"><a href="/">首页</a></li>
+            <li class="layui-nav-item {{if eq .data.class_id 2}}layui-this{{end}}"><a href="/list/2">诗词古韵</a></li>
+            <li class="layui-nav-item {{if eq .data.class_id 1}}layui-this{{end}}"><a href="/list/1">国学经典</a></li>
+            <li class="layui-nav-item {{if eq .data.class_id  5}}layui-this{{end}}"><a href="/list/5">开心儿歌</a></li>
+            <li class="layui-nav-item {{if eq .data.class_id 3}}layui-this{{end}}"><a href="/list/3">儿童古诗</a></li>
+        </ul>
+    </div>
+
+    <!-- 内容主体区域 -->
+    {{.LayoutContent}}
+
+    <script>
+        //注意：导航 依赖 element 模块，否则无法进行功能性操作
+        layui.use('element', function(){
+            var element = layui.element;
+
+            //…
+        });
+    </script>
+    <div class="layui-row layui-bg-cyan" style="border: 1px solid #f2f2f2;margin: 10px auto;">
+        <div class="footer">
+            ©2018 Kaixin00  <a style="color:#ffffff" href="http://www.miibeian.gov.cn" target="_blank">京ICP备12047817号</a> 邮箱：mail@kaixin00.com
+            <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_4947325'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s6.cnzz.com/stat.php%3Fid%3D4947325%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

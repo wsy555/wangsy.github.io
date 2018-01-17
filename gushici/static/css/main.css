@@ -1,0 +1,47 @@
+@charset "utf-8";
+.x-slide_left{
+  width: 17px;
+  height: 61px;
+  background:  url(../img/icon.png) 0 0 no-repeat;
+  position: absolute;
+  top: 200px;
+  left: 0px;
+  cursor: pointer;
+}
+
+.nav-title{
+	height: 45px;
+	border: #e4e4e4 1px solid;
+	line-height: 45px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+}
+
+.tl{
+	text-align: left;
+}
+.tr{
+	text-align: right;
+}
+
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+
+.ml20{
+	margin-left: 20px; 
+}
+
+.ml8{
+	margin-left: 8px;
+}
+
+.mt10{
+	margin-top:10px;
+}
+
+

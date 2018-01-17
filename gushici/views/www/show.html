@@ -1,0 +1,77 @@
+<style>
+    h1{
+        font-size:20px;
+    }
+</style>
+    <div class="layui-row">
+        <h1 style="text-align: center">{{.data.title}}</h1>
+    </div>
+    <hr class="layui-bg-orange">
+    <div class="layui-row" style="padding: 20px;border: 1px solid #f2f2f2;font-size:16px;">
+        <div class="layui-col-md8 layui-col-md-offset2">
+            <div class="show">
+                <div  style="height: 350px;background: url(https://www.kaixin00.com{{.data.picurl}}) center center / cover no-repeat;"></div>
+                <div style="margin-top: 10px">
+                {{if .data.media}}
+                    <audio src="https://www.kaixin00.com{{.data.media}}" controls="controls" autoplay="autoplay">
+                        您的浏览器不支持 audio 标签。
+                    </audio>
+                {{end}}
+                </div>
+                <div class="layui-text" style="min-height: 500px;margin-top: 10px;">
+                {{if .data.content}}
+                    {{str2html .data.content}}
+                 {{end}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row" style="text-align: center;">
+        {{/*<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>*/}}
+        {{/*<!-- 320x100 -->*/}}
+        {{/*<ins class="adsbygoogle"*/}}
+             {{/*style="display:inline-block;width:320px;height:100px"*/}}
+             {{/*data-ad-client="ca-pub-4597858668520362"*/}}
+             {{/*data-ad-slot="4604829778"></ins>*/}}
+        {{/*<script>*/}}
+            {{/*(adsbygoogle = window.adsbygoogle || []).push({});*/}}
+        {{/*</script>*/}}
+            <script type="text/javascript">
+                /*468*60 创建于 2018/1/17*/
+                var cpro_id = "u3189135";
+            </script>
+            <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/c.js"></script>
+
+    </div>
+    <script>
+        //屏蔽右键菜单
+        document.oncontextmenu = function (event){
+            if(window.event){
+                event = window.event;
+            }try{
+                var the = event.srcElement;
+                if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")){
+                    return false;
+                }
+                return true;
+            }catch (e){
+                return false;
+            }
+        }
+        
+        //屏蔽复制
+        document.oncopy = function (event){
+            if(window.event){
+                event = window.event;
+            }try{
+                var the = event.srcElement;
+                if(!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")){
+                    return false;
+                }
+                return true;
+            }catch (e){
+                return false;
+            }
+        }
+    </script>

@@ -1,0 +1,204 @@
+<div class="layui-layout layui-layout-admin" style="padding-left: 40px;margin-top: 20px;">
+<form class="layui-form" action="" method="post" >
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-inline" style="width: 350px;">
+            <input type="text" name="title" id="title" autocomplete="off" lay-verify="required" placeholder="标题" class="layui-input" value="">
+        </div>
+        <div class="layui-form-mid layui-word-aux">*</div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">分类</label>
+            <div class="layui-input-inline">
+              <select name="class_id" lay-verify="required">
+                <option value="">选择</option>
+                {{range $ind, $elem := .news_class }}
+                <option value="{{$elem.id}}">{{$elem.class_name}}</option>
+                {{end}} 
+              </select>
+            </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">作者</label>
+        <div class="layui-input-inline">
+            <input type="text" name="author" id="author" autocomplete="off" placeholder="作者" class="layui-input" value="">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">关键字</label>
+        <div class="layui-input-inline">
+            <input type="text" name="keywors" id="keywors" autocomplete="off" placeholder="keywors" class="layui-input" value="">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">功能</label>
+        <div class="layui-input-inline">
+            <input type="text" name="used" id="used" autocomplete="off" placeholder="used" class="layui-input" value="">
+            (1预测，)
+        </div>
+
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">上传图片</label>
+        <div class="layui-input-block" style="width: 350px;">
+           <button type="button" class="layui-btn" id="picImgUpload">
+                <i class="layui-icon">&#xe681;</i>上传图片
+            </button>
+
+           <input type="text" name="pic_url" id="pic_url" lay-verify="" autocomplete="off" placeholder="封面" class="layui-input" value="">
+            <img class="layui-upload-img" src="/static/img/none.jpg" width="100" height="100" id="demo1">
+            
+        </div>
+        
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">上传语音</label>
+        <div class="layui-input-block" style="width: 350px;">
+           <button type="button" class="layui-btn" id="mediaUpload">
+                <i class="layui-icon">&#xe645;</i>上传语音
+            </button>
+            <input type="text" name="media" id="media"  autocomplete="off" placeholder="音频" class="layui-input" value="">
+        </div>
+    </div>
+    <script>
+        layui.use('upload', function(){
+            var upload = layui.upload;
+
+            //执行实例
+            var uploadImage = upload.render({
+                elem: '#picImgUpload' //绑定元素
+                ,url: '/news/upload/' //上传接口
+                ,accept:'images'
+                ,field:'upfile'
+                ,size:'1024'// <1M
+                ,done: function(res){
+                    //上传完毕回调
+                    if(res.msg == 'ok'){
+                        $("#pic_url").val('/'+res.url);
+                    }
+                }
+                ,error: function(){
+                    //请求异常回调
+                }
+            });
+
+
+            var uploadMedia = upload.render({
+                elem: '#mediaUpload' //绑定元素
+                ,url: '/news/upload/' //上传接口
+                ,accept:'audio'
+                ,field:'upfile'
+                ,done: function(res){
+                    //上传完毕回调
+                    if(res.msg == 'ok'){
+                        $("#media").val('/'+res.url);
+                    }
+                }
+                ,error: function(){
+                    //请求异常回调
+                }
+            });
+        });
+    </script>
+
+
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">简介</label>
+        <div class="layui-input-block">
+            <textarea name="desc" placeholder="请输入内容" style="width:80%;height:200px;" class="layui-textarea">{{.news.desc}}</textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">内容</label>
+        <div class="layui-input-block">
+            <script>
+                window.UMEDITOR_HOME_URL = "/static/umeditor/";
+            </script>
+            <!-- 加载编辑器的容器 -->
+            <script id="container" name="content" style="width:80%;height:360px;" type="text/plain"></script>
+            <link href="/static/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+            <script src="/static/umeditor/third-party/jquery.min.js"></script>
+            <script type="text/javascript" charset="utf-8" src="/static/umeditor/umeditor.config.js"></script>
+            <script type="text/javascript" charset="utf-8" src="/static/umeditor/umeditor.min.js"></script>
+            <!-- 实例化编辑器 -->
+            <script type="text/javascript">
+                um = UM.getEditor('container',
+                        {
+                            imageUrl:"/news/upload",
+                            imagePath:"/"
+                        }
+                );
+            </script>
+
+        </div>
+        <div class="layui-form-mid layui-word-aux">*</div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序</label>
+        <div class="layui-input-inline">
+            <input type="text" name="orderid" id="orderid" autocomplete="off" placeholder="used" class="layui-input" value="">
+            (越大越靠前)
+        </div>
+    </div>
+    
+    <input type="hidden" id="id" name="id" value="{{.news.id}}">
+    
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="sub">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</div>
+<script>
+var $;
+    layui.config({
+            base : "js/"
+    }).use(['form','element','layer','jquery'],function(){
+        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        var $ = layui.jquery;
+        var role_ids_str = "{{.admin.role_ids}}"
+        var role_ids = role_ids_str.split(",");
+
+        form.on('checkbox(role_ids)', function(data){
+            if(data.elem.checked==true){
+                role_ids.push(data.value)
+            }else{
+                $.each(role_ids,function(index,item){  
+                    // index是索引值（即下标）   item是每次遍历得到的值；
+                    if(item==data.value){
+                        role_ids.splice(index,1);
+                    }
+                });
+            }
+            $("#roleids").val(role_ids.join(","));
+        });
+
+        form.on('submit(sub)', function(data){
+            var form_data = $("form").serialize();
+            $.post('{{urlfor "NewsController.AjaxSave"}}', form_data, function (out) {
+                if (out.status == 0) {
+                    layer.msg("操作成功",{icon: 1},function () {
+                        window.location.reload()
+                    })
+                } else {
+                    layer.msg(out.message)
+                }
+            }, "json");
+            return false;
+        });
+      //但是，如果你的HTML是动态生成的，自动渲染就会失效
+      //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+      form.render();
+}); 
+</script>
