@@ -4,4 +4,11 @@
 后台PPGoAdmin
 提示程序中的sql文件只是后台的一部分。
 
-gushici 目录名字 修改成 PPGo_ApiAdmin 在运行。OK
+
+因为程序中引用地址没有修改 例：
+	"PPGo_ApiAdmin/libs"
+	"PPGo_ApiAdmin/models"
+	"github.com/astaxie/beego"
+
+所以：
+gushici 目录名字 修改成 PPGo_ApiAdmin 再运行。OK。
